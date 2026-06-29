@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="intro-screen" class="screen active">
+        <div class="envelope-wrapper">
+            <div class="envelope" onclick="openEnvelope()">
+                <div class="flap"></div>
+                <div class="pocket"></div>
+                <div class="letter">
+                    <p>Click Me ❤️</p>
+                </div>
+            </div>
+            <p class="tap-text">You have a special invitation. Tap the envelope to open...</p>
+        </div>
+    </div>
+
+    <div id="main-content" class="screen hidden">
+        
+        <nav class="navbar">
+            <h1 class="logo">Happy Birthday! ✨</h1>
+            <div class="nav-links">
+                <button onclick="switchTab('gallery')">📸 Our Moments</button>
+                <button onclick="switchTab('timeline')">⏳ Story</button>
+                <button onclick="switchTab('reasons')">💖 Reasons Why</button>
+                <button onclick="switchTab('game')">🎈 Surprise Game</button>
+            </div>
+        </nav>
+
+        <header class="hero-section">
+            <h2 class="romantic-text">To the Most Beautiful Girl in the World...</h2>
+            <p>Welcome to your personal digital corner. Explore all the options below!</p>
+        </header>
+
+        <section id="gallery" class="tab-content active-tab">
+            <h3 class="section-title">Our Favorite Memories</h3>
+            <div class="gallery-grid">
+                <div class="card" onclick="openLightbox('photo1.jpg', 'The day we laughed until our stomachs hurt.')">
+                    <img src="photo1.jpg" alt="Memory 1" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500'">
+                    <div class="card-overlay">View Memory</div>
+                </div>
+                <div class="card" onclick="openLightbox('photo2.jpg', 'Our favorite date night.')">
+                    <img src="photo2.jpg" alt="Memory 2" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500'">
+                    <div class="card-overlay">View Memory</div>
+                </div>
+                <div class="card" onclick="openLightbox('photo3.jpg', 'That cozy rainy afternoon.')">
+                    <img src="photo3.jpg" alt="Memory 3" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500'">
+                    <div class="card-overlay">View Memory</div>
+                </div>
+                <div class="card" onclick="openLightbox('photo4.jpg', 'Celebrating your wins!')">
+                    <img src="photo4.jpg" alt="Memory 4" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500'">
+                    <div class="card-overlay">View Memory</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="tab-content hidden-tab">
+            <h3 class="section-title">Our Timeline</h3>
+            <div class="timeline-container">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h4>The First Meet 🗓️</h4>
+                        <p>The exact moment my life changed for the better. I still remember what you were wearing.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h4>The First "I Love You" 💬</h4>
+                        <p>My heart was beating so fast, but saying it to you was the easiest thing I've ever done.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h4>Today & Beyond ♾️</h4>
+                        <p>Celebrating another beautiful year of your life. I am so lucky to stand by your side.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reasons" class="tab-content hidden-tab">
+            <h3 class="section-title">Tap a Heart to See Why I Love You</h3>
+            <div class="reasons-grid">
+                <button class="reason-btn" onclick="showReason('Your Smile', 'It literally lights up my entire dark day in a split second.')">❤️</button>
+                <button class="reason-btn" onclick="showReason('Your Kindness', 'The way you care for everyone around you inspires me to be a better person.')">💖</button>
+                <button class="reason-btn" onclick="showReason('Your Laugh', 'It is my absolute favorite sound in the world.')">💝</button>
+                <button class="reason-btn" onclick="showReason('Your Support', 'You believe in me even when I forget how to believe in myself.')">💕</button>
+                <button class="reason-btn" onclick="showReason('Your Style', 'You manage to look absolutely breathtaking effortlessly.')">💗</button>
+                <button class="reason-btn" onclick="showReason('Everything', 'Just being you is more than I ever could have dreamed of.')">💘</button>
+            </div>
+            <div id="reason-display-box" class="reason-box">
+                <h4 id="reason-title">Click a heart icon above!</h4>
+                <p id="reason-text"></p>
+            </div>
+        </section>
+
+        <section id="game" class="tab-content hidden-tab">
+            <h3 class="section-title">Pop the Balloons for a Surprise!</h3>
+            <p class="game-instruction">Pop 5 balloons to unlock your final birthday wish!</p>
+            <div class="score-board">Balloons Popped: <span id="score">0</span>/5</div>
+            <div id="balloon-container" class="balloon-zone"></div>
+        </section>
+    </div>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-img" id="lightbox-img">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <div id="final-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>🎉 Happy Birthday, Gorgeous! 🎂</h2>
+            <p>May this year bring you endless happiness, success, and love. Thank you for being my partner, my best friend, and my favorite adventure. I love you to the moon and back! 🌙✨</p>
+            <button class="close-modal-btn" onclick="closeFinalModal()">Close ❤️</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
